@@ -27,13 +27,12 @@ def plot_images(images_arr):
 
 def preprocess_image(file_path, label):
     img = tf.io.read_file(file_path)
-    img = decode_img(img, config.IMG_WIDTH, config.IMG_HEIGHT)
+    img = decode_img(img, config.IMG_SIZE, config.IMG_SIZE)
     return img, label
 
 
 def decode_img(img, width, height):
     img = tf.image.decode_jpeg(img, channels=3)
-    # img = tf.image.convert_image_dtype(img, tf.float32)
-    img = (tf.cast(img, tf.float32) / 127.5) - 1
+    img = tf.image.convert_image_dtype(img, tf.float32)
     return tf.image.resize(img, [width, height])
 
