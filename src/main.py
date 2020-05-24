@@ -20,7 +20,7 @@ def preprocess_data(rows):
     return data
 
 
-connection = helpers.create_connection("C:\\dev\\AvtoNetScraper\\src\\backup.db")
+connection = helpers.create_connection(config.database_path)
 
 with connection:
     cur = connection.cursor()
