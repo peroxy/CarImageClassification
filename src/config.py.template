@@ -1,0 +1,16 @@
+bodyShapes = {
+    "cabriolet": 1,
+    "coupe": 2,
+    "enoprostorec / van": 3,
+    "karavan": 4,
+    "kombilimuzina / hatchback": 5,
+    "limuzina": 6,
+    "pick-up": 7,
+    "terensko vozilo / SUV": 8
+}
+
+epochs = 15
+IMG_HEIGHT = 150
+IMG_WIDTH = 150
+
+database_path = r"C:\path\to\your\database.db"
