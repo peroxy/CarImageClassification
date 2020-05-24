@@ -54,6 +54,7 @@ crashlytics-build.properties
 
 staticfiles
 .env
-src/config.py
+src_machine_learning/config.py
 *.h5
 /generated/
+/src_machine_learning/config.py
