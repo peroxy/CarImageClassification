@@ -19,6 +19,43 @@ def get_default_model(img_size, mapping_dict):
     return model
 
 
+def get_optimized_model(img_size, mapping_dict):
+    model = tf.keras.models.Sequential([
+        tf.keras.layers.Conv2D(16, (3, 3), padding='same', activation='relu', input_shape=(img_size, img_size, 3)),
+        tf.keras.layers.MaxPooling2D(2, 2), tf.keras.layers.Conv2D(32, (3, 3), padding='same', activation='relu'),
+        tf.keras.layers.MaxPooling2D(2, 2),
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dense(512, activation='relu'),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dense(120, activation='softmax'),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dense(max(mapping_dict.values()) + 1)
+    ])
+
+    model.compile(optimizer='adam',
+                  loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+                  metrics=['accuracy'])
+
+    return model
+
+
+def get_pretrained_model(img_size, mapping_dict):
+    mobile_net = tf.keras.applications.MobileNetV2(input_shape=(img_size, img_size, 3), include_top=False)
+    mobile_net.trainable = False
+    model = tf.keras.models.Sequential([
+        mobile_net,
+        tf.keras.layers.GlobalAveragePooling2D(),
+        tf.keras.layers.Dense(max(mapping_dict.values()) + 1)
+    ])
+
+    model.compile(optimizer='adam',
+                  loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+                  metrics=['accuracy'])
+
+    return model
+
+
 def train_model(model, rows, mapping_dict, save_model_path, batch_size, epochs):
     train_number = int(len(rows) * 0.8)
     train_filenames = [row[1] for row in rows][:train_number]
@@ -69,5 +106,3 @@ def draw_model_history(history, epochs, file_name):
 
     plt.savefig(file_name, bbox_inches='tight')
     plt.show()
-
-
