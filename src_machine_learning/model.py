@@ -105,4 +105,3 @@ def draw_model_history(history, epochs, file_name):
     plt.title('Training and Validation Loss')
 
     plt.savefig(file_name, bbox_inches='tight')
-    plt.show()

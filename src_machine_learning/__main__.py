@@ -25,7 +25,8 @@ def train_body_shape_models(limit, project_dir):
                                      config.BATCH_SIZE,
                                      config.EPOCHS)
 
-        draw_model_history(history, config.EPOCHS, project_dir + r"\generated\body_shape\body_shape_default_model_history.png")
+        draw_model_history(history, config.EPOCHS,
+                           project_dir + r"\generated\body_shape\body_shape_default_model_history.png")
 
         model, history = train_model(get_pretrained_model(config.IMG_SIZE, config.body_shape_to_id),
                                      body_shapes,
@@ -34,7 +35,8 @@ def train_body_shape_models(limit, project_dir):
                                      config.BATCH_SIZE,
                                      config.EPOCHS)
 
-        draw_model_history(history, config.EPOCHS, project_dir + r"\generated\body_shape\body_shape_pretrained_model_history.png")
+        draw_model_history(history, config.EPOCHS,
+                           project_dir + r"\generated\body_shape\body_shape_pretrained_model_history.png")
 
         model, history = train_model(get_optimized_model(config.IMG_SIZE, config.body_shape_to_id),
                                      body_shapes,
@@ -43,7 +45,8 @@ def train_body_shape_models(limit, project_dir):
                                      config.BATCH_SIZE,
                                      config.EPOCHS)
 
-        draw_model_history(history, config.EPOCHS, project_dir + r"\generated\body_shape\body_shape_optimized_model_history.png")
+        draw_model_history(history, config.EPOCHS,
+                           project_dir + r"\generated\body_shape\body_shape_optimized_model_history.png")
 
 
 def train_color_models(limit, project_dir):
@@ -199,7 +202,8 @@ def train_engine_models(limit, project_dir):
                                      config.BATCH_SIZE,
                                      config.EPOCHS)
 
-        draw_model_history(history, config.EPOCHS, project_dir + r"\generated\engine\engine_pretrained_model_history.png")
+        draw_model_history(history, config.EPOCHS,
+                           project_dir + r"\generated\engine\engine_pretrained_model_history.png")
 
         model, history = train_model(get_optimized_model(config.IMG_SIZE, config.engine_to_id),
                                      engines,
@@ -208,14 +212,25 @@ def train_engine_models(limit, project_dir):
                                      config.BATCH_SIZE,
                                      config.EPOCHS)
 
-        draw_model_history(history, config.EPOCHS, project_dir + r"\generated\engine\engine_optimized_model_history.png")
+        draw_model_history(history, config.EPOCHS,
+                           project_dir + r"\generated\engine\engine_optimized_model_history.png")
 
 
 # we have around 45k train cases, we want them all..
 directory = os.path.dirname(os.getcwd())
-max_row_count = 1000
+max_row_count = 50000
+
+print("Training body shapes...")
 train_body_shape_models(max_row_count, directory)
+
+print("Training colors...")
 train_color_models(max_row_count, directory)
+
+print("Training age...")
 train_age_models(max_row_count, directory)
+
+print("Training engine...")
 train_engine_models(max_row_count, directory)
+
+print("Training doors...")
 train_doors_models(max_row_count, directory)
