@@ -26,19 +26,28 @@ def get_models(model_name):
 
 
 def predict_age(img):
-    pass
+    predictions = get_model_predictions(img, age_default_model, age_optimized_model,
+                                        age_pretrained_model, config.id_to_age)
+    return predictions
 
 
 def predict_color(img):
-    pass
+    predictions = get_model_predictions(img, color_default_model, color_optimized_model,
+                                        color_pretrained_model, config.id_to_color)
+    return predictions
 
 
 def predict_engine(img):
-    pass
+    predictions = get_model_predictions(img, engine_default_model, engine_optimized_model,
+                                        engine_pretrained_model, config.id_to_engine)
+    return predictions
 
 
 def predict_doors(img):
-    pass
+    predictions = get_model_predictions(img, doors_default_model, doors_optimized_model,
+                                        doors_pretrained_model,
+                                        config.door_to_id)  # its integer:integer, cba making edge case
+    return predictions
 
 
 def get_all_predictions(img_path):
@@ -78,7 +87,7 @@ def get_image_from_path(img_path):
 
 
 body_shape_default_model, body_shape_optimized_model, body_shape_pretrained_model = get_models("body_shape")
-# age_default_model, age_optimized_model, age_pretrained_model = get_models("age")
-# color_default_model, color_optimized_model, color_pretrained_model = get_models("color")
-# doors_default_model, doors_optimized_model, doors_pretrained_model = get_models("doors")
-# engine_default_model, engine_optimized_model, engine_pretrained_model = get_models("engine")
+age_default_model, age_optimized_model, age_pretrained_model = get_models("age")
+color_default_model, color_optimized_model, color_pretrained_model = get_models("color")
+doors_default_model, doors_optimized_model, doors_pretrained_model = get_models("doors")
+engine_default_model, engine_optimized_model, engine_pretrained_model = get_models("engine")
