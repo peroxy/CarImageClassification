@@ -57,7 +57,8 @@ def get_all_predictions(img_path):
                    "age": predict_age(img),
                    "color": predict_color(img),
                    "engine": predict_engine(img),
-                   "doors": predict_doors(img)}
+                   "doors": predict_doors(img)
+                   }
     return predictions
 
 

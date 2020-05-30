@@ -1,1 +1,63 @@
-hi mom
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Klasifikacija slik avtomobilov</title>
+    <meta name="description" content="Seminarska naloga pri predmetu Podatkovno rudarjenje">
+    <meta name="author" content="Nejc Pisk">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="echarts.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="col">
+        <div class="row justify-content-center mt-3">
+            <label for="path" class="text-right">Local file path: </label>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <input type="text" id="path" style="width:800px">
+        </div>
+        <div class="row justify-content-center mt-3">
+            <button type="submit" onclick="predict()" class="btn btn-primary">Predict</button>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div id="agePlot" style="width:800px; height:600px; border: 1px solid black;"></div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div id="bodyShapePlot" style="width:800px; height:600px; border: 1px solid black;"></div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div id="colorPlot" style="width:800px; height:600px; border: 1px solid black;"></div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div id="doorsPlot" style="width:800px; height:600px; border: 1px solid black;"></div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div id="enginePlot" style="width:800px; height:600px; border: 1px solid black;"></div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
